@@ -14,6 +14,8 @@
 [certificatesResolvers.letsencrypt.acme]
   email = "tls@hudalla.dev"
   storage = "/acme/acme.json"
+  # Use staging for testing to avoid rate limits
+  # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
   caServer = "https://acme-v02.api.letsencrypt.org/directory"
   keyType = "EC256"
   # Only renew certificates 30 days before expiry
