@@ -16,8 +16,6 @@
   storage = "/acme/acme.json"
   # Use staging for testing to avoid rate limits
   keyType = "EC256"
-  # Disable pre-check to prevent unnecessary requests
-  disablePropagationCheck = true
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
     entryPoint = "web"
 
