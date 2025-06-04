@@ -1,6 +1,6 @@
 include:
   - services/chhoto/compose.yml
-  - services/ncld_temp/compose.yml
+  - services/nextcloud/compose.yml
 
 services:
   # PROXY
