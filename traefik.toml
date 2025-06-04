@@ -1,0 +1,23 @@
+# Entry Points
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.websecure]
+    address = ":443"
+
+# Provider for Docker
+[providers.docker]
+  endpoint = "unix:///var/run/docker.sock"
+  exposedByDefault = false
+
+# Certificate Resolvers
+[certificatesResolvers.letsencrypt.acme]
+  email = "tls@hudalla.dev"
+  storage = "/acme/acme.json"
+  [certificatesResolvers.letsencrypt.acme.httpChallenge]
+    entryPoint = "web"
+
+# API and Dashboard (optional - remove if not needed)
+[api]
+  dashboard = false
+  insecure = false
