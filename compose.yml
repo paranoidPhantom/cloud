@@ -15,4 +15,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
-      - ./acme/acme.json:/acme.json
+      - ./acme/acme.json:/acme/acme.json
