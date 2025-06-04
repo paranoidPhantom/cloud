@@ -18,8 +18,10 @@
   # caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
   caServer = "https://acme-v02.api.letsencrypt.org/directory"
   keyType = "EC256"
-  # Only renew certificates 30 days before expiry
+  # Disable pre-check to prevent unnecessary requests
+  disablePropagationCheck = true
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
+    entryPoint = "web"
 
 # Global configuration to reduce checks
 [global]
