@@ -14,15 +14,10 @@
 [certificatesResolvers.letsencrypt.acme]
   email = "tls@hudalla.dev"
   storage = "/acme/acme.json"
-  # Use staging for testing to avoid rate limits
+  caServer = "https://acme-v02.api.letsencrypt.org/directory"
   keyType = "EC256"
   [certificatesResolvers.letsencrypt.acme.httpChallenge]
     entryPoint = "web"
-
-# Global configuration to reduce checks
-[global]
-  checkNewVersion = false
-  sendAnonymousUsage = false
 
 # API and Dashboard (optional - remove if not needed)
 [api]
