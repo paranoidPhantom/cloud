@@ -1,5 +1,5 @@
 include:
-  - services/dozzle/compose.yml
+  - services/chhoto/compose.yml
 
 services:
   # PROXY
