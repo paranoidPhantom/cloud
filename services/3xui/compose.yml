@@ -4,14 +4,14 @@ services:
     container_name: 3xui_appl
     labels:
       - traefik.enable=true
-      - traefik.http.routers.3x-ui.rule=Host(`3x.eu1.hudalla.dev`)
-      - traefik.http.routers.3x-ui.entrypoints=websecure
-      - traefik.http.routers.3x-ui.tls.certresolver=letsencrypt
-      - traefik.http.services.3x-ui.loadbalancer.server.port=2053
+      - traefik.http.routers.3xui_appl.rule=Host(`3x.eu1.hudalla.dev`)
+      - traefik.http.routers.3xui_appl.entrypoints=websecure
+      - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
+      - traefik.http.services.3xui_appl.loadbalancer.server.port=2053
       # HTTP to HTTPS redirect
-      - traefik.http.routers.3x-ui-http.rule=Host(`3x.eu1.hudalla.dev`)
-      - traefik.http.routers.3x-ui-http.entrypoints=web
-      - traefik.http.routers.3x-ui-http.middlewares=redirect-to-https
+      - traefik.http.routers.3xui_appl-http.rule=Host(`3x.eu1.hudalla.dev`)
+      - traefik.http.routers.3xui_appl-http.entrypoints=web
+      - traefik.http.routers.3xui_appl-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     volumes:
       - $PWD/db/:/etc/x-ui/
