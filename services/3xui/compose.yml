@@ -4,10 +4,16 @@ services:
     container_name: 3xui_appl
     labels:
       - traefik.enable=true
+      # Main web interface router
       - traefik.http.routers.3xui_appl.rule=Host(`3x.eu1.hudalla.dev`)
       - traefik.http.routers.3xui_appl.entrypoints=websecure
       - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
       - traefik.http.services.3xui_appl.loadbalancer.server.port=2053
+      # Subscription router for /sub path
+      - traefik.http.routers.3xui_sub.rule=Host(`3x.eu1.hudalla.dev`) && PathPrefix(`/sub`)
+      - traefik.http.routers.3xui_sub.entrypoints=websecure
+      - traefik.http.routers.3xui_sub.tls.certresolver=letsencrypt
+      - traefik.http.routers.3xui_sub.service=3xui_appl
       # HTTP to HTTPS redirect
       - traefik.http.routers.3xui_appl-http.rule=Host(`3x.eu1.hudalla.dev`)
       - traefik.http.routers.3xui_appl-http.entrypoints=web
