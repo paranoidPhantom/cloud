@@ -1,0 +1,25 @@
+services:
+  3xui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3xui_appl
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.chhoto-url.rule=Host(`3x.eu1.hudalla.dev`)
+      - traefik.http.routers.chhoto-url.entrypoints=websecure
+      - traefik.http.routers.chhoto-url.tls.certresolver=letsencrypt
+      - traefik.http.services.chhoto-url.loadbalancer.server.port=2053
+      # HTTP to HTTPS redirect
+      - traefik.http.routers.chhoto-url-http.rule=Host(`3x.eu1.hudalla.dev`)
+      - traefik.http.routers.chhoto-url-http.entrypoints=web
+      - traefik.http.routers.chhoto-url-http.middlewares=redirect-to-https
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+    hostname: 3x.eu1.hudalla.dev
+    volumes:
+      - $PWD/db/:/etc/x-ui/
+      - $PWD/cert/:/root/cert/
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+      XUI_ENABLE_FAIL2BAN: "true"
+    tty: true
+    network_mode: host
+    restart: unless-stopped
