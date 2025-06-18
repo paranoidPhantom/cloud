@@ -13,7 +13,7 @@ services:
       - traefik.http.routers.3xui_sub.rule=Host(`3x.eu1.hudalla.dev`) && PathPrefix(`/sub`)
       - traefik.http.routers.3xui_sub.entrypoints=websecure
       - traefik.http.routers.3xui_sub.tls.certresolver=letsencrypt
-      - traefik.http.routers.3xui_sub.service=3xui_appl
+      - traefik.http.services.3xui_sub.loadbalancer.server.port=2096
       # HTTP to HTTPS redirect
       - traefik.http.routers.3xui_appl-http.rule=Host(`3x.eu1.hudalla.dev`)
       - traefik.http.routers.3xui_appl-http.entrypoints=web
