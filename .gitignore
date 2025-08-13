@@ -1,2 +1,4 @@
-acme
+acme/
 .DS_Store
+.data/
+db/
