@@ -21,8 +21,6 @@ services:
       XRAY_VMESS_AEAD_FORCED: "false"
       XUI_ENABLE_FAIL2BAN: "true"
     ports:
-      - "1000-5298:1000-5298/tcp"
-      - "5300-9089:5300-9089/tcp"
       - "9093-40000:9093-40000/tcp"
     tty: true
     restart: unless-stopped
