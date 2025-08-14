@@ -2,6 +2,7 @@ include:
   - services/chhoto/compose.yml
   - services/nextcloud/compose.yml
   - services/3xui/compose.yml
+  - services/mtproxy/compose.yml
 
 services:
   # PROXY
