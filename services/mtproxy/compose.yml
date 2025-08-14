@@ -3,17 +3,7 @@ services:
     image: telegrammessenger/proxy:latest
     container_name: mtproto-proxy
     restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      # Main web interface router
-      - traefik.http.routers.mtproxy.rule=Host(`mt.${HOST}`)
-      - traefik.http.routers.mtproxy.entrypoints=websecure
-      - traefik.http.routers.mtproxy.tls.certresolver=letsencrypt
-      - traefik.http.services.mtproxy.loadbalancer.server.port=443
-      # HTTP to HTTPS redirect
-      - traefik.http.routers.mtproxy-http.rule=Host(`mt.${HOST}`)
-      - traefik.http.routers.mtproxy-http.entrypoints=web
-      - traefik.http.routers.mtproxy-http.middlewares=redirect-to-https
-      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+    ports:
+      - "${MT_PROTO_PORT}:443"
     volumes:
       - ./data:/data
