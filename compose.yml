@@ -3,6 +3,7 @@ include:
   - services/nextcloud/compose.yml
   - services/3xui/compose.yml
   - services/mtproxy/compose.yml
+  - services/lectures/compose.yml
 
 services:
   # PROXY

@@ -1,0 +1,30 @@
+services:
+  speaches:
+    image: ghcr.io/speaches-ai/speaches:latest-cpu
+    restart: unless-stopped
+    volumes:
+      - ./data/whisper:/home/ubuntu/.cache/huggingface/hub
+  minio:
+    image: minio/minio
+    container_name: minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    volumes:
+      - ./data:/data
+    environment:
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+  frontend:
+    image: ghcr.io/paranoidphantom/digest:latest
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.lectures=Host(`${LECTURES_BASE}`)
+      - traefik.http.routers.lectures=websecure
+      - traefik.http.routers.lectures.certresolver=letsencrypt
+      - traefik.http.services.lectures.server.port=80
+      # HTTP to HTTPS redirect
+      - traefik.http.routers.lectures.rule=Host(`${LECTURES_BASE}`)
+      - traefik.http.routers.lectures.entrypoints=web
+      - traefik.http.routers.lectures.middlewares=redirect-to-https
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
