@@ -22,7 +22,7 @@ services:
       - traefik.http.routers.lectures=Host(`${LECTURES_BASE}`)
       - traefik.http.routers.lectures=websecure
       - traefik.http.routers.lectures.certresolver=letsencrypt
-      - traefik.http.services.lectures.server.port=80
+      - traefik.http.services.lectures.server.port=3000
       # HTTP to HTTPS redirect
       - traefik.http.routers.lectures.rule=Host(`${LECTURES_BASE}`)
       - traefik.http.routers.lectures.entrypoints=web
