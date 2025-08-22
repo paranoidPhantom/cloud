@@ -3,7 +3,7 @@ services:
     image: ghcr.io/speaches-ai/speaches:latest-cpu
     restart: unless-stopped
     volumes:
-      - ./data/whisper:/home/ubuntu/.cache/huggingface/hub
+      - ./data-whisper:/home/ubuntu/.cache/huggingface/hub
   minio:
     image: minio/minio
     container_name: minio
