@@ -19,14 +19,14 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.lectures=Host(`${LECTURES_BASE}`)
-      - traefik.http.routers.lectures=websecure
-      - traefik.http.routers.lectures.certresolver=letsencrypt
-      - traefik.http.services.lectures.server.port=3000
-      # HTTP to HTTPS redirect
       - traefik.http.routers.lectures.rule=Host(`${LECTURES_BASE}`)
-      - traefik.http.routers.lectures.entrypoints=web
-      - traefik.http.routers.lectures.middlewares=redirect-to-https
+      - traefik.http.routers.lectures.entrypoints=websecure
+      - traefik.http.routers.lectures.tls.certresolver=letsencrypt
+      - traefik.http.services.lectures.loadbalancer.server.port=3000
+      # HTTP to HTTPS redirect
+      - traefik.http.routers.lectures-http.rule=Host(`${LECTURES_BASE}`)
+      - traefik.http.routers.lectures-http.entrypoints=web
+      - traefik.http.routers.lectures-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     environment:
       - NUXT_PUBLIC_SUPABASE_URL=${NUXT_PUBLIC_SUPABASE_URL}
