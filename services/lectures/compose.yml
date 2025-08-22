@@ -29,7 +29,9 @@ services:
       - traefik.http.routers.lectures-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     environment:
-      - NUXT_PUBLIC_SUPABASE_URL=${NUXT_PUBLIC_SUPABASE_URL}
-      - NUXT_PUBLIC_SUPABASE_KEY=${NUXT_PUBLIC_SUPABASE_KEY}
-      - NUXT_SUPABASE_SERVICE_KEY=${NUXT_SUPABASE_SERVICE_KEY}
-      - GROQ_API_KEY=${GROQ_API_KEY}
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      NUXT_PUBLIC_SUPABASE_URL: ${NUXT_PUBLIC_SUPABASE_URL}
+      NUXT_PUBLIC_SUPABASE_KEY: ${NUXT_PUBLIC_SUPABASE_KEY}
+      NUXT_SUPABASE_SERVICE_KEY: ${NUXT_SUPABASE_SERVICE_KEY}
+      GROQ_API_KEY: ${GROQ_API_KEY}
