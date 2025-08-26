@@ -5,12 +5,12 @@ services:
     container_name: chhoto-url
     labels:
       - traefik.enable=true
-      - traefik.http.routers.chhoto-url.rule=Host(`${NEXTCLOUD_BASE}`)
+      - traefik.http.routers.chhoto-url.rule=Host(`${CHHOTO_URL_BASE}`)
       - traefik.http.routers.chhoto-url.entrypoints=websecure
       - traefik.http.routers.chhoto-url.tls.certresolver=letsencrypt
       - traefik.http.services.chhoto-url.loadbalancer.server.port=4567
       # HTTP to HTTPS redirect
-      - traefik.http.routers.chhoto-url-http.rule=Host(`${NEXTCLOUD_BASE}`)
+      - traefik.http.routers.chhoto-url-http.rule=Host(`${CHHOTO_URL_BASE}`)
       - traefik.http.routers.chhoto-url-http.entrypoints=web
       - traefik.http.routers.chhoto-url-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
