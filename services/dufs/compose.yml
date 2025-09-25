@@ -15,6 +15,6 @@ services:
       - traefik.http.routers.dufs_appl-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     restart: unless-stopped
-    command: /data
+    command: /data -a ${DUFS_AUTH_CONFIG}
     volumes:
       - ./data:/data
