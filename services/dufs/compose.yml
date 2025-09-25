@@ -1,18 +1,18 @@
 services:
-  mtproto-proxy:
+  dufs:
     image: sigoden/dufs
     container_name: dufs
     labels:
       - traefik.enable=true
       # Main web interface router
-      - traefik.http.routers.3xui_appl.rule=Host(`dufs.${HOST}`)
-      - traefik.http.routers.3xui_appl.entrypoints=websecure
-      - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
-      - traefik.http.services.3xui_appl.loadbalancer.server.port=5000
+      - traefik.http.routers.dufs_appl.rule=Host(`dufs.${HOST}`)
+      - traefik.http.routers.dufs_appl.entrypoints=websecure
+      - traefik.http.routers.dufs_appl.tls.certresolver=letsencrypt
+      - traefik.http.services.dufs_appl.loadbalancer.server.port=5000
       # HTTP to HTTPS redirect
-      - traefik.http.routers.3xui_appl-http.rule=Host(`dufs.${HOST}`)
-      - traefik.http.routers.3xui_appl-http.entrypoints=web
-      - traefik.http.routers.3xui_appl-http.middlewares=redirect-to-https
+      - traefik.http.routers.dufs_appl-http.rule=Host(`dufs.${HOST}`)
+      - traefik.http.routers.dufs_appl-http.entrypoints=web
+      - traefik.http.routers.dufs_appl-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     restart: unless-stopped
     command: /data
