@@ -19,6 +19,8 @@ services:
     volumes:
       - ./data/db/:/etc/x-ui/
       - ./data/cert/:/root/cert/
+      - /etc/letsencrypt/live/${HOST}/fullchain.pem:/root/customcert/fullchain.pem
+      - /etc/letsencrypt/live/${HOST}/privkey.pem:/root/customcert/privkey.pem
     environment:
       XRAY_VMESS_AEAD_FORCED: "false"
       XUI_ENABLE_FAIL2BAN: "true"
