@@ -3,7 +3,7 @@
   [entryPoints.web]
     address = ":80"
   [entryPoints.websecure]
-    address = ":443"
+    address = ":6500"
 
 # Provider for Docker
 [providers.docker]

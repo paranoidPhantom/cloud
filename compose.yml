@@ -10,7 +10,7 @@ services:
     user: "0:0"  # Run as root to access the acme.json file
     ports:
       - "80:80"
-      - "443:443"
+      - "6500:6500"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml

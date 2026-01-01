@@ -1,4 +1,5 @@
 acme/acme.json
+services/*/data/
 .DS_Store
 .data/
 db/
