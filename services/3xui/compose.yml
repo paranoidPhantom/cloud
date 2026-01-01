@@ -8,6 +8,7 @@ services:
       - traefik.http.routers.3xui_appl.rule=Host(`${HOST}`)
       - traefik.http.routers.3xui_appl.entrypoints=websecure
       - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
+      - traefik.http.routers.3xui_appl.service=3xui_appl
       - traefik.http.services.3xui_appl.loadbalancer.server.port=2053
 
       - traefik.http.routers.3xui_appl_sub.rule=Host(`${HOST}`) && PathPrefix(`/sub`)
