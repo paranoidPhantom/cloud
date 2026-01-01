@@ -17,4 +17,4 @@ services:
       - acme:/acme/acme.json
 
   volumes:
-      - acme
+    acme:
