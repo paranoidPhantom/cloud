@@ -26,8 +26,6 @@ services:
       - traefik.http.middlewares.redirect-to-external.redirectregex.regex=^.*
       - traefik.http.middlewares.redirect-to-external.redirectregex.replacement=https://contract.gosuslugi.ru/
       - traefik.http.middlewares.redirect-to-external.redirectregex.permanent=true
-    networks:
-      - traefik-network
 
 volumes:
   acme:
