@@ -10,7 +10,6 @@ services:
     user: "0:0"  # Run as root to access the acme.json file
     ports:
       - "80:80"
-      - "443:443"
       - "6500:6500"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -18,6 +17,8 @@ services:
       - ./acme/acme.json:/acme/acme.json
   redirect-service:
     image: traefik/whoami  # Lightweight image, won't actually be used
+    ports:
+      - "443:443"
     labels:
       - traefik.enable=true
       # Redirect base URL to external site
