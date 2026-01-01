@@ -1,9 +1,5 @@
 include:
-  - services/chhoto/compose.yml
-  - services/nextcloud/compose.yml
   - services/3xui/compose.yml
-  - services/mtproxy/compose.yml
-  - services/dufs/compose.yml
 
 services:
   # PROXY
@@ -18,4 +14,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
-      - ./acme/acme.json:/acme/acme.json
+      - acme:/acme/acme.json
+
+  volumes:
+      - acme

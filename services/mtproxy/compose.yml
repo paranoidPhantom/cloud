@@ -1,9 +1,0 @@
-services:
-  mtproto-proxy:
-    image: telegrammessenger/proxy:latest
-    container_name: mtproto-proxy
-    restart: unless-stopped
-    ports:
-      - "${MT_PROTO_PORT}:443"
-    volumes:
-      - ./data:/data

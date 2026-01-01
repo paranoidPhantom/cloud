@@ -5,12 +5,13 @@ services:
     labels:
       - traefik.enable=true
       # Main web interface router
-      - traefik.http.routers.3xui_appl.rule=Host(`3x.${HOST}`)
+      - traefik.http.routers.3xui_appl.rule=Host(`${HOST}`)
       - traefik.http.routers.3xui_appl.entrypoints=websecure
       - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
+      # - traefik.http.routers.3xui_appl.rule=PathPrefix(`/api`)
       - traefik.http.services.3xui_appl.loadbalancer.server.port=2053
       # HTTP to HTTPS redirect
-      - traefik.http.routers.3xui_appl-http.rule=Host(`3x.${HOST}`)
+      - traefik.http.routers.3xui_appl-http.rule=Host(`${HOST}`)
       - traefik.http.routers.3xui_appl-http.entrypoints=web
       - traefik.http.routers.3xui_appl-http.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
