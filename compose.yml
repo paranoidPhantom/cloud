@@ -10,6 +10,7 @@ services:
     user: "0:0"  # Run as root to access the acme.json file
     ports:
       - "80:80"
+      - "443:443"
       - "6500:6500"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -21,11 +22,7 @@ services:
       - traefik.enable=true
       # Redirect base URL to external site
       - traefik.http.routers.redirect-root.rule=Host(`${HOST}`) && Path(`/`)
-      - traefik.http.routers.redirect-root.entrypoints=websecure
-      - traefik.http.routers.redirect-root.middlewares=redirect-to-external
-      - traefik.http.middlewares.redirect-to-external.redirectregex.regex=^.*
-      - traefik.http.middlewares.redirect-to-external.redirectregex.replacement=https://contract.gosuslugi.ru/
-      - traefik.http.middlewares.redirect-to-external.redirectregex.permanent=true
+      - traefik.http.routers.redirect-root.entrypoints=fake
 
 volumes:
   acme:
