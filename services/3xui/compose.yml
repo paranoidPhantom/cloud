@@ -13,7 +13,6 @@ services:
       - traefik.http.routers.3xui_appl_sub.rule=Host(`${HOST}`) && PathPrefix(`/sub`)
       - traefik.http.routers.3xui_appl_sub.entrypoints=websecure
       - traefik.http.routers.3xui_appl_sub.tls.certresolver=letsencrypt
-      - traefik.http.services.3xui_appl_sub.loadbalancer.server.port=2096
     volumes:
       - ./data/db/:/etc/x-ui/
       - ./data/cert/:/root/cert/
