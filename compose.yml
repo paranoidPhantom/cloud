@@ -21,7 +21,7 @@ services:
       - traefik.enable=true
       # Redirect base URL to external site
       - traefik.http.routers.redirect-root.rule=Host(`${HOST}`) && Path(`/`)
-      - traefik.http.routers.redirect-root.entrypoints=web
+      - traefik.http.routers.redirect-root.entrypoints=websecure
       - traefik.http.routers.redirect-root.middlewares=redirect-to-external
       - traefik.http.middlewares.redirect-to-external.redirectregex.regex=^.*
       - traefik.http.middlewares.redirect-to-external.redirectregex.replacement=https://contract.gosuslugi.ru/
