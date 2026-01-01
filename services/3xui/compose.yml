@@ -8,7 +8,7 @@ services:
       - traefik.http.routers.3xui_appl.rule=Host(`${HOST}`) && PathPrefix(`/api`)
       - traefik.http.routers.3xui_appl.entrypoints=websecure
       - traefik.http.routers.3xui_appl.tls.certresolver=letsencrypt
-      - traefik.http.routers.3xui_appl.middlewares=api-stripprefix
+      - traefik.http.routers.3xui_appl.middlewares=3xui_appl-stripprefix
       - traefik.http.middlewares.3xui_appl-stripprefix.stripprefix.prefixes=/api
       # - traefik.http.routers.3xui_appl.rule=PathPrefix(`/api`)
       - traefik.http.services.3xui_appl.loadbalancer.server.port=2053

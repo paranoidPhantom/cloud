@@ -16,8 +16,8 @@
   storage = "/acme/acme.json"
   caServer = "https://acme-v02.api.letsencrypt.org/directory"
   keyType = "EC256"
-  [certificatesResolvers.letsencrypt.acme.httpChallenge]
-    entryPoint = "web"
+[certificatesResolvers.letsencrypt.acme.httpChallenge]
+  entryPoint = "web"
 
 # API and Dashboard (optional - remove if not needed)
 [api]
