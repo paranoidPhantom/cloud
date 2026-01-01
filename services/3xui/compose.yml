@@ -14,11 +14,6 @@ services:
       - traefik.http.routers.3xui_appl_sub.entrypoints=websecure
       - traefik.http.routers.3xui_appl_sub.tls.certresolver=letsencrypt
       - traefik.http.services.3xui_appl_sub.loadbalancer.server.port=2096
-      # HTTP to HTTPS redirect
-      - traefik.http.routers.3xui_appl-http.rule=Host(`${HOST}`)
-      - traefik.http.routers.3xui_appl-http.entrypoints=web
-      - traefik.http.routers.3xui_appl-http.middlewares=redirect-to-https
-      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
     volumes:
       - ./data/db/:/etc/x-ui/
       - ./data/cert/:/root/cert/
