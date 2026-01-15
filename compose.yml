@@ -14,13 +14,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
       - ./acme/acme.json:/acme/acme.json
-  redirect-service:
-    image: traefik/whoami  # Lightweight image, won't actually be used
-    labels:
-      - traefik.enable=true
-      # Redirect base URL to external site
-      - traefik.http.routers.redirect-root.entrypoints=fake
-      - traefik.http.routers.redirect-root.tls.certresolver=letsencrypt
 
 volumes:
   acme:
