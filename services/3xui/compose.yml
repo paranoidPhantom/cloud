@@ -18,7 +18,7 @@ services:
       - traefik.http.services.3xui_appl_sub.loadbalancer.server.port=2096
     volumes:
       - ./data/db/:/etc/x-ui/
-      - ./data/cert/:/root/cert/
+      - ./certs/:/
       - /etc/letsencrypt/live/${HOST}/fullchain.pem:/root/customcert/fullchain.pem
       - /etc/letsencrypt/live/${HOST}/privkey.pem:/root/customcert/privkey.pem
     environment:
