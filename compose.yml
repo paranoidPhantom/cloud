@@ -1,5 +1,6 @@
 include:
   - services/3xui/compose.yml
+  - services/excalidraw/compose.yml
 
 services:
   # PROXY

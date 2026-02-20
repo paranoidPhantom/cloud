@@ -1,0 +1,19 @@
+services:
+  excali:
+    image: excalidraw/excalidraw
+    container_name: excali_appl
+    labels:
+      - traefik.enable=true
+      # Main web interface router
+      - traefik.http.routers.excali_appl.rule=Host(`ex.eu1.hudalla.dev`)
+      - traefik.http.routers.excali_appl.entrypoints=websecure
+      - traefik.http.routers.excali_appl.tls.certresolver=letsencrypt
+      - traefik.http.routers.excali_appl.service=excali_appl
+      - traefik.http.services.excali_appl.loadbalancer.server.port=80
+    volumes:
+      - ./data/db/:/etc/x-ui/
+      - ./certs/:/root/certs
+      - /etc/letsencrypt/live/${HOST}/fullchain.pem:/root/customcert/fullchain.pem
+      - /etc/letsencrypt/live/${HOST}/privkey.pem:/root/customcert/privkey.pem
+    tty: true
+    restart: unless-stopped
